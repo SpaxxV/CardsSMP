@@ -10,6 +10,7 @@ cardsmp:
     duration: 24000 # 20 Minutes
   cards:
     ocean-card:
+      drowning-damage: 3
       ability-1:
         cooldown: 1000
         duration: 600
