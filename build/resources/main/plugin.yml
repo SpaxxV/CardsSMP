@@ -1,6 +1,0 @@
-name: CardSMP
-version: '1.0.0'
-main: com.spaxxv.cardsmp.CardSMP
-api-version: '1.21'
-authors: [ SpaxxV ]
-description: Dedicated plugin for CardSMP
