@@ -1,0 +1,143 @@
+cardsmp:
+  head-drop-chance: 0.3
+  ritual:
+    timezone-offset: 18000000 # Eastern Standard Time
+    start-time: 43200000 # Noon
+    end-time: 86399999 # Midnight
+    days:
+      - 2 # Wednesday
+      - 5 # Saturday
+    duration: 24000 # 20 Minutes
+  cards:
+    ocean-card:
+      ability-1:
+        cooldown: 1000
+        duration: 600
+        effect-duration: 100
+        hit-amount: 6
+      ability-2:
+        cooldown: 1400
+        duration: 140
+        radius: 2.5
+    sky-card:
+      ability-1:
+        cooldown: 1200
+        duration: 100
+      ability-2:
+        cooldown: 1600
+        duration: 200
+    breeze-card:
+      passive:
+        jump-velocity: 0.42
+      ability-1:
+        cooldown: 1200
+        speed: 2.0
+      ability-2:
+        cooldown: 1200
+        duration: 200
+        speed: 1.0
+        radius: 2.5
+        knockback: 1.0
+    ghost-card:
+      passive:
+        chance: 0.1
+        effect-duration: 60
+      ability-1:
+        cooldown: 1000
+        increase: 1200
+      ability-2:
+        cooldown: 1600
+        duration: 80
+        radius: 2.5
+        effect-duration: 100
+    bounty-card:
+      ability-1:
+        cooldown: 1200
+        duration: 100
+        radius: 4.5
+      ability-2:
+        cooldown: 2000
+        warn-distance: 1000
+    conductor-card:
+      ability-1:
+        cooldown: 2400
+        duration: 300
+        hit-amount: 4
+        damage: 4.0
+      ability-2:
+        cooldown: 1800
+        duration: 200
+        riptide-duration: 10
+        speed: 1.5
+        bolts: 8
+        radius: 3.0
+        aoe-damage: 6.0
+        damage: 12.0
+    freeze-card:
+      ability-1:
+        cooldown: 1200
+        duration: 400
+        hit-amount: 5
+        effect-duration: 60
+      ability-2:
+        cooldown: 1600
+        duration: 200
+        effect-duration: 60
+    alchemist-card:
+      ability-1:
+        cooldown: 1200
+        radius: 2.0
+        increase: 600
+      ability-2:
+        cooldown: 2000
+        duration: 200
+    invis-card:
+      ability-1:
+        cooldown: 1400
+        dashes: 3
+        effect-duration: 60
+        distance: 5.0
+      ability-2:
+        cooldown: 1200
+        duration: 200
+    medic-card:
+      passive:
+        multiplier: 1.5
+      ability-1:
+        cooldown: 1200
+        duration: 200
+        radius: 2.5
+        heal: 8.0
+      ability-2:
+        cooldown: 1600
+        duration: 200
+        hit-amount: 3
+    inferno-card:
+      ability-1:
+        cooldown: 1200
+        radius: 2.5
+      ability-2:
+        cooldown: 1600
+        duration: 300
+        fireballs: 3
+        speed: 0.75
+    boost-card:
+      ability-1:
+        cooldown: 1200
+        duration: 200
+        effect-level: 5
+      ability-2:
+        cooldown: 1600
+        radius: 2.0
+        min-level: 10
+        max-level: 100
+        min-damage: 2.0
+        max-damage: 8.0
+        min-speed: 1
+        max-speed: 6
+        drain-rate: 20
+  event-cards:
+    blood-card:
+      ability-1:
+        cooldown: 1000
+        duration: 400
