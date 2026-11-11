@@ -17,7 +17,9 @@ import com.spaxxv.cardsmp.data.values.DataString;
 import com.spaxxv.cardsmp.data.values.DataSubMap;
 import com.spaxxv.cardsmp.items.Item;
 import com.spaxxv.cardsmp.items.ItemRegistry;
+import com.spaxxv.cardsmp.items.Items;
 import com.spaxxv.cardsmp.items.classes.EventCardItem;
+import com.spaxxv.cardsmp.recipes.Matchable;
 import com.spaxxv.cardsmp.recipes.RecipeManager;
 import com.spaxxv.cardsmp.ritual.Ritual;
 import com.spaxxv.cardsmp.ritual.RitualItem;
@@ -152,13 +154,14 @@ public class CardSMPEventHandlers implements Listener {
                         if (!RitualManager.hasOngoing()) {
                             if (RitualManager.isActive()) {
                                 CardInstance card = CardManager.getCard(event.getPlayer());
-                                if (card != null && card.tearLevel == 5) {
+                                if (card != null && card.tearLevel > 0) {
                                     RitualItem[] ritualItems = new RitualItem[5];
                                     ItemStack[] items = event.getPlayer().getInventory().getContents();
                                     int ri = 0;
                                     boolean netherStar = false;
                                     int heads = 0;
                                     for (ItemStack item : items) {
+                                        if (item == null) continue;
                                         if (heads < 4 && item.getType() == Material.PLAYER_HEAD) {
                                             int req = (4 - heads);
                                             if (item.getAmount() >= req) {
@@ -179,15 +182,22 @@ public class CardSMPEventHandlers implements Listener {
                                     if (netherStar && heads == 4) {
                                         for (int i = 0; i < ri; i++) {
                                             ritualItems[i].doRemove();
-                                            RitualManager.setRitual(new Ritual(event.getPlayer()));
-                                            Collection<? extends Player> players = CardSMP.instance.getServer().getOnlinePlayers();
-                                            String name = event.getPlayer().getName();
-                                            for (Player player : players) {
-                                                player.sendMessage(Component.text(name + " has begun a ritual.").color(NamedTextColor.GOLD));
+                                        }
+                                        RitualManager.setRitual(new Ritual(event.getPlayer(), 5));
+                                    } else {
+                                        RitualItem ritualItem = null;
+                                        for (ItemStack item : items) {
+                                            if (item != null & ItemRegistry.isCustom(item) && ItemRegistry.getItemFrom(item) == Items.CARD_TAPE) {
+                                                ritualItem = new RitualItem(item, 1);
+                                                break;
                                             }
                                         }
-                                    } else {
-                                        event.getPlayer().sendMessage(Component.text("You are missing the required materials to begin a ritual!").color(NamedTextColor.RED));
+                                        if (ritualItem != null) {
+                                            ritualItem.doRemove();
+                                            RitualManager.setRitual(new Ritual(event.getPlayer(), 1));
+                                        } else {
+                                            event.getPlayer().sendMessage(Component.text("You are missing the required materials to begin a ritual!").color(NamedTextColor.RED));
+                                        }
                                     }
                                 } else {
                                     event.getPlayer().sendMessage(Component.text("The ritual altar deems you have no need for a ritual!").color(NamedTextColor.RED));
@@ -246,7 +256,7 @@ public class CardSMPEventHandlers implements Listener {
                             player.getWorld().strikeLightningEffect(player.getLocation());
                         }
                     }
-                    if (AbilityManager.isActive(attacker, Cards.CONDUCTOR.ability2()) && event.getDamageSource().getDamageType() == DamageType.TRIDENT && attacker.isRiptiding()) {
+                    if (AbilityManager.isActive(attacker, Cards.CONDUCTOR.ability2()) && event.getDamageSource().getDamageType() == DamageType.TRIDENT) {
                         AbilityInstance ability = AbilityManager.getAbilityInstance(attacker, Cards.CONDUCTOR.ability2());
                         DataInt stage = (DataInt) ability.data.get("stage");
                         if (stage.value == 1) {
@@ -305,6 +315,14 @@ public class CardSMPEventHandlers implements Listener {
                             }
                             pMaxHealth.addModifier(new AttributeModifier(CardSMP.instance.getResourceKey("medic-stolen"), lost.value, AttributeModifier.Operation.ADD_NUMBER));
                             if (player.getHealth() > pMaxHealth.getValue()) player.setHealth(pMaxHealth.getValue());
+                        }
+                    }
+                    if (AbilityManager.isActive(attacker, Cards.BOOST.ability1())) {
+                        if (CardSMP.instance.getRng().nextDouble() > Cards.BOOST.getConfigDouble("ability-1.steal-chance")) {
+                            int stealAmount = Cards.BOOST.getConfigInt("ability-1.steal-amount");
+                            if (player.getTotalExperience() < stealAmount) stealAmount = player.getTotalExperience();
+                            player.setTotalExperience(player.getTotalExperience() - stealAmount);
+                            attacker.setTotalExperience(attacker.getTotalExperience() + stealAmount);
                         }
                     }
                 }
@@ -375,7 +393,8 @@ public class CardSMPEventHandlers implements Listener {
                     if (canUse.value) {
                         canUse.value = false;
                         Vector current = event.getPlayer().getVelocity();
-                        event.getPlayer().setVelocity(new Vector(current.getX() * 2, Cards.BREEZE.getConfigDouble("passive.jump-velocity"), current.getZ() * 2));
+                        double speed = Cards.BREEZE.getConfigDouble("passive.speed-multiplier");
+                        event.getPlayer().setVelocity(new Vector(current.getX() * speed, Cards.BREEZE.getConfigDouble("passive.jump-velocity"), current.getZ() * speed));
                     }
                 }
             }
@@ -420,6 +439,11 @@ public class CardSMPEventHandlers implements Listener {
                     playerHead.setData(DataComponentTypes.PROFILE, ResolvableProfile.resolvableProfile(event.getPlayer().getPlayerProfile()));
                     deathLocation.getWorld().dropItem(deathLocation, playerHead);
                 }
+                CardInstance cardInstance = CardManager.getCard(event.getPlayer());
+                if (cardInstance != null && cardInstance.tearLevel < 5) {
+                    cardInstance.tearLevel++;
+                    CardManager.setCardData(event.getPlayer(), cardInstance);
+                }
             }
         }
         InventoryHolder holder = event.getPlayer().getOpenInventory().getTopInventory().getHolder();
@@ -427,11 +451,6 @@ public class CardSMPEventHandlers implements Listener {
             event.getPlayer().closeInventory(InventoryCloseEvent.Reason.DEATH);
         }
         AbilityManager.endPlayerAbilities(event.getPlayer(), false);
-        CardInstance cardInstance = CardManager.getCard(event.getPlayer());
-        if (cardInstance != null && cardInstance.tearLevel < 5) {
-            cardInstance.tearLevel++;
-            CardManager.setCardData(event.getPlayer(), cardInstance);
-        }
     }
 
     @EventHandler

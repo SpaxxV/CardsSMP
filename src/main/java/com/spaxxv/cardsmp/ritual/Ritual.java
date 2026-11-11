@@ -9,10 +9,12 @@ public class Ritual {
     public int remainingTime;
     public BossBar bar;
     public boolean endNextTick;
-    public Ritual(Player p) {
+    public int repairAmount;
+    public Ritual(Player p, int rep) {
         player = p;
         remainingTime = RitualManager.getDuration();
         bar = BossBar.bossBar(Component.text("Ritual"), 0, BossBar.Color.RED, BossBar.Overlay.PROGRESS);
         endNextTick = false;
+        repairAmount = rep;
     }
 }

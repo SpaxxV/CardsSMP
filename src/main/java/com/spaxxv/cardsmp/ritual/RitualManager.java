@@ -3,6 +3,7 @@ package com.spaxxv.cardsmp.ritual;
 import com.spaxxv.cardsmp.CardSMP;
 import com.spaxxv.cardsmp.cards.CardInstance;
 import com.spaxxv.cardsmp.cards.CardManager;
+import com.spaxxv.cardsmp.data.values.DataBoolean;
 import com.spaxxv.cardsmp.data.values.DataByteArray;
 import com.spaxxv.cardsmp.data.values.DataString;
 import com.spaxxv.cardsmp.util.MapBuilder;
@@ -18,6 +19,7 @@ import java.nio.ByteBuffer;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class RitualManager {
     private static final Map<DayOfWeek, Integer> dayLookup = new MapBuilder<DayOfWeek, Integer>()
@@ -36,7 +38,9 @@ public class RitualManager {
     private static int duration;
     private static Location location;
     private static boolean active;
+    private static boolean enabled;
     private static Ritual activeRitual;
+    private static boolean hasLoaded = false;
     private static byte[] serializeLocation(Location l) {
         if (l == null) l = new Location(CardSMP.instance.getServer().getWorlds().getFirst(), 0, 0, 0);
 
@@ -68,7 +72,7 @@ public class RitualManager {
         int dayOfWeek = dayLookup.get(localDate.getDayOfWeek());
         long todayTime = offsetTime % 86400000;
         if (days.contains(dayOfWeek)) {
-            return (todayTime > start && todayTime < end);
+            return (todayTime > start && todayTime < end) && enabled;
         }
         return false;
     }
@@ -98,7 +102,11 @@ public class RitualManager {
                     if (activeRitual.remainingTime == 0) {
                         success = true;
                         CardInstance card = CardManager.getCard(activeRitual.player);
-                        if (card != null) card.tearLevel = 0;
+                        if (card != null) {
+                            card.tearLevel -= activeRitual.repairAmount;
+                            if (card.tearLevel < 0) card.tearLevel = 0;
+                            CardManager.setCardData(activeRitual.player, card);
+                        }
                     }
                     activeRitual = null;
                 }
@@ -130,15 +138,24 @@ public class RitualManager {
         } else {
             setLocation(deserializeLocation(byteArray.value));
         }
+        DataBoolean isEnabled = (DataBoolean) CardSMP.pluginData.get("ritual-enabled");
+        if (isEnabled != null) {
+            enabled = isEnabled.value;
+        } else {
+            enabled = false;
+        }
         days = CardSMP.config.getIntegerList("cardsmp.ritual.days");
         start = CardSMP.config.getLong("cardsmp.ritual.start-time");
         end = CardSMP.config.getLong("cardsmp.ritual.end-time");
         timezoneOffset = CardSMP.config.getLong("cardsmp.ritual.timezone-offset");
         duration = CardSMP.config.getInt("cardsmp.ritual.duration");
         active = canActivate();
+        hasLoaded = true;
     }
     public static void saveData() {
+        if (!hasLoaded) return;
         CardSMP.pluginData.set("ritual-location", new DataByteArray(serializeLocation(location)));
+        CardSMP.pluginData.set("ritual-enabled", new DataBoolean(enabled));
     }
     public static void setLocation(Location l) {
         location = l;
@@ -150,8 +167,16 @@ public class RitualManager {
     public static boolean isActive() {
         return active;
     }
+    public static void setEnabled(boolean b) {
+        enabled = b;
+    }
     public static void setRitual(Ritual r) {
         activeRitual = r;
+        Collection<? extends Player> players = CardSMP.instance.getServer().getOnlinePlayers();
+        String name = r.player.getName();
+        for (Player player : players) {
+            player.sendMessage(Component.text(name + " has begun a ritual.").color(NamedTextColor.GOLD));
+        }
     }
     public static boolean hasOngoing() {
         return activeRitual != null;

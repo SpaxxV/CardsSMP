@@ -33,10 +33,10 @@ public class AlchemistCard extends Card {
                 for (Player player : players) {
                     if (TrustedPlayer.hasTrust(event.player, player) || player.equals(event.player)) {
                         for (PotionEffect effect : player.getActivePotionEffects()) {
-                            if (effect.getType().getCategory() == PotionEffectTypeCategory.BENEFICIAL) {
-                                if (effect.getType() == PotionEffectType.INVISIBILITY && AbilityManager.isActive(player, Cards.GHOST.passive())) {
-                                    player.getPersistentDataContainer().set(CardSMP.instance.getResourceKey("ghost_increase_bypass"), PersistentDataType.BOOLEAN, true);
-                                }
+                            if (effect.getType().getCategory() == PotionEffectTypeCategory.BENEFICIAL || effect.getType() == PotionEffectType.WEAVING) {
+//                                if (effect.getType() == PotionEffectType.INVISIBILITY && AbilityManager.isActive(player, Cards.GHOST.passive())) {
+//                                    player.getPersistentDataContainer().set(CardSMP.instance.getResourceKey("ghost_increase_bypass"), PersistentDataType.BOOLEAN, true);
+//                                }
                                 player.addPotionEffect(effect.withDuration(effect.getDuration() + getConfigInt("ability-1.increase")));
                             }
                         }

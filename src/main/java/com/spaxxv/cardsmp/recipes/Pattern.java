@@ -24,8 +24,8 @@ public class Pattern {
         }
         return new PatternBuilder(new Pattern(9, false));
     }
-    private PatternItem[] patternItems;
-    private final ArrayList<PatternItem> arrayList;
+    private Matchable[] patternItems;
+    private final ArrayList<Matchable> arrayList;
     private final boolean isDynamic;
     private int sizeLimit;
     private boolean compiled;
@@ -38,7 +38,7 @@ public class Pattern {
             arrayList = new ArrayList<>();
         } else {
             arrayList = null;
-            patternItems = new PatternItem[size];
+            patternItems = new Matchable[size];
         }
     }
     public int getSize() {
@@ -47,7 +47,7 @@ public class Pattern {
     public boolean isCompiled() {
         return compiled;
     }
-    public void setItem(int index, PatternItem item) throws IllegalAccessException, IndexOutOfBoundsException {
+    public void setItem(int index, Matchable item) throws IllegalAccessException, IndexOutOfBoundsException {
         if (compiled) throw new IllegalAccessException("Cannot edit a compiled pattern!");
         if (index < 0 || index >= sizeLimit) throw new IndexOutOfBoundsException("Index " + index + " is out of size limit " + sizeLimit + " for pattern.");
         if (isDynamic) {
@@ -59,7 +59,7 @@ public class Pattern {
     public void compile() throws IllegalAccessException {
         if (compiled) throw new IllegalAccessException("Cannot compile an already compiled pattern!");
         if (isDynamic) {
-            patternItems = new PatternItem[arrayList.size()];
+            patternItems = new Matchable[arrayList.size()];
             for (int i = 0; i < patternItems.length; i++) {
                 patternItems[i] = arrayList.get(i);
             }
@@ -70,10 +70,10 @@ public class Pattern {
     public boolean matches(Pattern pattern) {
         if (!compiled || !pattern.compiled) return false;
         if (isDynamic) {
-            PatternItem[] firstItemList = patternItems.clone();
-            PatternItem[] secondItemList = pattern.patternItems.clone();
+            Matchable[] firstItemList = patternItems.clone();
+            Matchable[] secondItemList = pattern.patternItems.clone();
             for (int i = 0; i < sizeLimit; i++) {
-                PatternItem currentItem = firstItemList[i];
+                Matchable currentItem = firstItemList[i];
                 if (currentItem == null) continue;
                 for (int n = 0; n < pattern.sizeLimit; n++) {
                     if (secondItemList[n] == null) continue;
@@ -93,7 +93,7 @@ public class Pattern {
         } else {
             if (pattern.sizeLimit != sizeLimit) return false;
             for (int i = 0; i < sizeLimit; i++) {
-                PatternItem currentItem = patternItems[i];
+                Matchable currentItem = patternItems[i];
                 if (pattern.patternItems[i] != null && currentItem != null) {
                     if (!currentItem.matches(pattern.patternItems[i])) return false;
                 } else if (!(pattern.patternItems[i] == null && currentItem == null)) return false;

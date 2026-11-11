@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.spaxxv'
-version = 'build1.0.0stable'
+version = 'build1.1.0stable'
 
 repositories {
     mavenCentral()

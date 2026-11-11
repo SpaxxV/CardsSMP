@@ -268,7 +268,17 @@ public class RecipeManager {
                 .addItems(new Material[] {Material.NETHERITE_INGOT, Material.OMINOUS_TRIAL_KEY, Material.NETHERITE_INGOT})
                 .addItem(Items.DIAMOND_SHARD).addItem(Material.PAPER).addItem(Items.CLUB_SHARD)
         .build(), Items.CARD_DECK.createItemStack()));
-        RecipeManager.addRecipe(new CraftingRecipe(Pattern.builder(Pattern.Type.CRAFTING_SHAPELESS).addItem(Material.PAPER).build(), new ItemStack(Material.BOOK)));
+        PatternGroup CARD_SHARDS_GROUP = new PatternGroup(
+                new PatternItem(Items.SPADE_SHARD),
+                new PatternItem(Items.CLUB_SHARD),
+                new PatternItem(Items.HEART_SHARD),
+                new PatternItem(Items.DIAMOND_SHARD)
+        );
+        RecipeManager.addRecipe(new CraftingRecipe(Pattern.builder(Pattern.Type.CRAFTING)
+                .addItems(new Material[] { Material.DIAMOND_BLOCK, Material.SLIME_BLOCK, Material.DIAMOND_BLOCK })
+                .addItem(CARD_SHARDS_GROUP).addItem(Material.WITHER_SKELETON_SKULL).addItem(CARD_SHARDS_GROUP)
+                .addItems(new Material[] { Material.DIAMOND_BLOCK, Material.HONEY_BLOCK, Material.DIAMOND_BLOCK })
+        .build(), Items.CARD_TAPE.createItemStack()));
         addAlchemistRecipes();
         CardSMP.instance.getLogger().info("Registered " + recipes.size() + " recipes.");
     }

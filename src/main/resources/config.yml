@@ -18,17 +18,18 @@ cardsmp:
       ability-2:
         cooldown: 1400
         duration: 140
-        radius: 2.5
+        radius: 4.0
     sky-card:
       ability-1:
         cooldown: 1200
-        duration: 100
+        duration: 60
       ability-2:
         cooldown: 1600
         duration: 200
     breeze-card:
       passive:
-        jump-velocity: 0.42
+        speed-multiplier: 3.0
+        jump-velocity: 0.65
       ability-1:
         cooldown: 1200
         speed: 2.0
@@ -36,8 +37,8 @@ cardsmp:
         cooldown: 1200
         duration: 200
         speed: 1.0
-        radius: 2.5
-        knockback: 1.0
+        radius: 5
+        knockback: 2.0
     ghost-card:
       passive:
         chance: 0.1
@@ -48,31 +49,32 @@ cardsmp:
       ability-2:
         cooldown: 1600
         duration: 80
-        radius: 2.5
+        radius: 4.0
         effect-duration: 100
     bounty-card:
       ability-1:
         cooldown: 1200
         duration: 100
-        radius: 4.5
+        radius: 9
       ability-2:
         cooldown: 2000
         warn-distance: 1000
+        break-chance: 0.2
     conductor-card:
       ability-1:
-        cooldown: 2400
+        cooldown: 1000
         duration: 300
         hit-amount: 4
-        damage: 4.0
+        damage: 6.0
       ability-2:
         cooldown: 1800
         duration: 200
         riptide-duration: 10
         speed: 1.5
-        bolts: 8
-        radius: 3.0
-        aoe-damage: 6.0
-        damage: 12.0
+        bolts: 12
+        radius: 5.0
+        aoe-damage: 40.0
+        damage: 10.0
     freeze-card:
       ability-1:
         cooldown: 1200
@@ -86,7 +88,7 @@ cardsmp:
     alchemist-card:
       ability-1:
         cooldown: 1200
-        radius: 2.0
+        radius: 5.0
         increase: 600
       ability-2:
         cooldown: 2000
@@ -106,7 +108,7 @@ cardsmp:
       ability-1:
         cooldown: 1200
         duration: 200
-        radius: 2.5
+        radius: 5.0
         heal: 8.0
       ability-2:
         cooldown: 1600
@@ -115,20 +117,24 @@ cardsmp:
     inferno-card:
       ability-1:
         cooldown: 1200
-        radius: 2.5
+        radius: 5.0
       ability-2:
         cooldown: 1600
         duration: 300
         fireballs: 3
+        explosion-power: 5
+        incendiary: true
         speed: 0.75
     boost-card:
       ability-1:
         cooldown: 1200
         duration: 200
+        steal-chance: 0.2
+        steal-amount: 10
         effect-level: 5
       ability-2:
         cooldown: 1600
-        radius: 2.0
+        radius: 5.0
         min-level: 10
         max-level: 100
         min-damage: 2.0

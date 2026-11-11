@@ -1,6 +1,8 @@
 package com.spaxxv.cardsmp.data.values;
 
 
+import com.spaxxv.cardsmp.CardSMP;
+
 import java.nio.ByteBuffer;
 
 public class DataBoolean extends DataElement {
@@ -20,7 +22,7 @@ public class DataBoolean extends DataElement {
     @Override
     public DataBoolean loadFromBytes(ByteBuffer buffer) {
         byte b = buffer.get();
-        value = (b > 0);
+        if (b != 0) value = true;
         return this;
     }
 

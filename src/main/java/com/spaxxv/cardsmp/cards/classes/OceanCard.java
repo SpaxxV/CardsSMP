@@ -42,7 +42,7 @@ public class OceanCard extends Card {
                         DataInt tick = (DataInt) affected.get(uuid);
                         tick.value++;
                         if (tick.value % 20 == 0) {
-                            player.damage(1, DamageSource.builder(DamageType.DROWN).withDirectEntity(event.player).build());
+                            player.damage(getConfigInt("drowning-damage"), DamageSource.builder(DamageType.DROWN).withDirectEntity(event.player).build());
                         }
                         if (tick.value == getConfigInt("ability-1.effect-duration")) affected.remove(uuid);
                     }
@@ -75,7 +75,7 @@ public class OceanCard extends Card {
                         DataInt tick = (DataInt) affected.get(uuid);
                         tick.value++;
                         if (tick.value % 20 == 0) {
-                            player.damage(1, DamageSource.builder(DamageType.DROWN).withDirectEntity(event.player).build());
+                            player.damage(getConfigInt("drowning-damage"), DamageSource.builder(DamageType.DROWN).withDirectEntity(event.player).build());
                         }
                     }
                 }

@@ -26,13 +26,9 @@ public class InvisCard extends Card {
             float pitch = (float) Math.toRadians(event.player.getPitch());
             Vector facing = new Vector(-Math.sin(yaw) * Math.cos(pitch), -Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch));
             event.player.teleport(event.player.getLocation().add(facing.multiply(getConfigDouble("ability-1.distance"))));
-            DataInt invisTicks = (DataInt) event.data.get("invis-ticks");
-            invisTicks.value = getConfigInt("ability-1.effect-duration");
-            Collection<? extends Player> players = event.player.getServer().getOnlinePlayers();
-            for (Player player : players) {
-                player.hidePlayer(CardSMP.instance, event.player);
-            }
-            event.player.setVisibleByDefault(false);
+            event.player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, getConfigInt("ability-1.effect-duration"), 1, true));
+            event.player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, getConfigInt("ability-1.effect-duration"), 1, true));
+            if (remainingDashes.value == 0) event.cancelAbility();
         }
     };
     private final Ability passiveAbility = new Ability()
@@ -50,27 +46,7 @@ public class InvisCard extends Card {
             .setDuration(200)
             .setAbilityData(new DataMap().set("dashes", new DataInt(getConfigInt("ability-1.dashes"))).set("invis-ticks", new DataInt()))
             .setActivate(dashEvent)
-            .setTrigger(dashEvent)
-            .setTick(event -> {
-                DataInt remainingDashes = (DataInt) event.data.get("dashes");
-                DataInt invisTicks = (DataInt) event.data.get("invis-ticks");
-                if (invisTicks.value > 0) {
-                    invisTicks.value--;
-                } else if (!event.player.isVisibleByDefault()) {
-                    Collection<? extends Player> players = event.player.getServer().getOnlinePlayers();
-                    for (Player player : players) {
-                        player.showPlayer(CardSMP.instance, event.player);
-                    }
-                    event.player.setVisibleByDefault(true);
-                    if (remainingDashes.value == 0) event.cancelAbility();
-                }
-            }).setEnd(event -> {
-                Collection<? extends Player> players = event.player.getServer().getOnlinePlayers();
-                for (Player player : players) {
-                    player.showPlayer(CardSMP.instance, event.player);
-                }
-                event.player.setVisibleByDefault(true);
-            });
+            .setTrigger(dashEvent);
 
     private final Ability activeAbility2 = new Ability()
             .setSlot(AbilitySlot.ACTIVE2)

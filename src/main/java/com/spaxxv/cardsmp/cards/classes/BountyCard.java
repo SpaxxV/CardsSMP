@@ -49,15 +49,12 @@ public class BountyCard extends Card {
     private final Ability activeAbility2 = new Ability()
             .setSlot(AbilitySlot.ACTIVE2)
             .setCooldown(getConfigInt("ability-2.cooldown"))
-            .setDuration(20)
-            .setAbilityData(new DataMap().set("target", new DataString()))
             .setActivate(event -> {
                 ItemStack item = event.player.getInventory().getItemInMainHand();
                 if (item.getType() == Material.PLAYER_HEAD) {
                     if (item.hasData(DataComponentTypes.PROFILE)) {
                         ResolvableProfile profile = item.getData(DataComponentTypes.PROFILE);
                         if (profile.uuid() != null) {
-                            event.data.set("target", new DataString(profile.uuid().toString()));
                             Player player = CardSMP.instance.getServer().getPlayer(profile.uuid());
                             World world = event.player.getWorld();
                             if (player != null && player.isOnline() && player.getWorld().equals(world)) {
@@ -67,6 +64,7 @@ public class BountyCard extends Card {
                                     event.cancelAbility();
                                     return;
                                 }
+                                if (CardSMP.instance.getRng().nextDouble() < getConfigDouble("ability-2.break-chance")) item.subtract();
                                 Location centralLocation = event.player.getEyeLocation().clone();
                                 Location targetLocation = player.getLocation().clone();
                                 if (!TrustedPlayer.hasTrust(event.player, player) && centralLocation.distance(targetLocation) < getConfigInt("ability-2.warn-distance")) {
@@ -76,7 +74,7 @@ public class BountyCard extends Card {
                                 Vector vector = targetLocation.subtract(centralLocation).toVector().normalize().multiply(0.25);
                                 for (int i = 0; i < 20; i++) {
                                     centralLocation.add(vector);
-                                    Particle.END_ROD.builder().location(centralLocation).extra(0).count(1).spawn();
+                                    Particle.SONIC_BOOM.builder().location(centralLocation).extra(0).count(1).spawn();
                                 }
                                 return;
                             }
@@ -90,20 +88,6 @@ public class BountyCard extends Card {
                 event.player.sendMessage(Component.text("Failed to track player. You must hold a player head in your main hand.").color(NamedTextColor.RED));
                 event.cancelCooldown();
                 event.cancelAbility();
-            })
-            .setTick(event -> {
-                Player player = CardSMP.instance.getServer().getPlayer(UUID.fromString(((DataString) event.data.get("target")).value));
-                World world = event.player.getWorld();
-                if (player != null && player.isOnline() && player.getWorld().equals(world)) {
-                    Location centralLocation = event.player.getEyeLocation().clone();
-                    Location targetLocation = player.getLocation().clone();
-
-                    Vector vector = targetLocation.subtract(centralLocation).toVector().normalize().multiply(0.25);
-                    for (int i = 0; i < 20; i++) {
-                        centralLocation.add(vector);
-                        Particle.END_ROD.builder().location(centralLocation).extra(0).count(1).spawn();
-                    }
-                }
             });
 
     @Override

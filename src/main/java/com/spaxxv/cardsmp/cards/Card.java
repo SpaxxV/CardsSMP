@@ -19,4 +19,7 @@ public abstract class Card {
     public double getConfigDouble(String path) {
         return CardSMP.config.getDouble(getConfigLoc(path));
     }
+    public boolean getConfigBool(String path) {
+        return CardSMP.config.getBoolean(getConfigLoc(path));
+    }
 }

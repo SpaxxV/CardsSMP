@@ -5,7 +5,7 @@ import com.spaxxv.cardsmp.items.ItemRegistry;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class PatternItem {
+public class PatternItem implements Matchable {
     private final Material material;
     private final Item item;
     public PatternItem(ItemStack itemStack) {
@@ -31,7 +31,7 @@ public class PatternItem {
     public boolean isCustomItem() {
         return item != null;
     }
-    public boolean matches(PatternItem patternItem) {
+    protected boolean matches(PatternItem patternItem) {
         if (isVanilla() && patternItem.isVanilla()) {
             return material == patternItem.material;
         } else if (isCustomItem() && patternItem.isCustomItem()) {
@@ -46,5 +46,13 @@ public class PatternItem {
         if (isVanilla()) return material.toString();
         if (isCustomItem()) return "custom:" + item.getItemName().replaceAll(" ", "_");
         return "PI:null";
+    }
+
+    @Override
+    public boolean matches(Matchable matchable) {
+        if (matchable instanceof PatternItem i) {
+            return matches(i);
+        }
+        return false;
     }
 }

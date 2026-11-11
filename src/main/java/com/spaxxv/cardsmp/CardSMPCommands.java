@@ -229,6 +229,22 @@ public class CardSMPCommands {
 
                     return Command.SINGLE_SUCCESS;
                 }));
+        root.then(Commands.literal("enableritual")
+                .executes(context -> {
+                    RitualManager.setEnabled(true);
+
+                    context.getSource().getSender().sendPlainMessage("Enabled ritual site.");
+
+                    return Command.SINGLE_SUCCESS;
+                }));
+        root.then(Commands.literal("disableritual")
+                .executes(context -> {
+                    RitualManager.setEnabled(false);
+
+                    context.getSource().getSender().sendPlainMessage("Disabled ritual site.");
+
+                    return Command.SINGLE_SUCCESS;
+                }));
         mainCommand = root.build();
         LiteralArgumentBuilder<CommandSourceStack> activate = Commands.literal("activate");
         activate.then(Commands.literal("ability1").executes(context -> {

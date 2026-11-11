@@ -11,7 +11,7 @@ public class PatternBuilder {
         index = 0;
         pattern = p;
     }
-    public PatternBuilder addItem(PatternItem item) {
+    public PatternBuilder addItem(Matchable item) {
         if (pattern.isCompiled()) return this;
         if (index < pattern.getSize()) {
             try {
@@ -23,10 +23,6 @@ public class PatternBuilder {
         }
         return this;
     }
-    public PatternBuilder addItem(StrictPatternItem item) {
-        addItem((PatternItem) item);
-        return this;
-    }
     public PatternBuilder addItem(Material m) {
         addItem(new PatternItem(m));
         return this;
@@ -35,12 +31,8 @@ public class PatternBuilder {
         addItem(new PatternItem(m));
         return this;
     }
-    public PatternBuilder addItems(PatternItem[] items) {
-        for (PatternItem item : items) addItem(item);
-        return this;
-    }
-    public PatternBuilder addItems(StrictPatternItem[] items) {
-        for (StrictPatternItem item : items) addItem(item);
+    public PatternBuilder addItems(Matchable[] items) {
+        for (Matchable item : items) addItem(item);
         return this;
     }
     public PatternBuilder addItems(Material[] items) {

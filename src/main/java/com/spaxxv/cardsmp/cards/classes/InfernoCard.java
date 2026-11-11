@@ -8,6 +8,7 @@ import com.spaxxv.cardsmp.data.DataMap;
 import com.spaxxv.cardsmp.data.values.DataInt;
 import com.spaxxv.cardsmp.events.AbilityEventListener;
 import com.spaxxv.cardsmp.trust.TrustedPlayer;
+import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.SmallFireball;
 import org.bukkit.potion.PotionEffect;
@@ -24,7 +25,9 @@ public class InfernoCard extends Card {
         float yaw = (float) Math.toRadians(event.player.getYaw());
         float pitch = (float) Math.toRadians(event.player.getPitch());
         Vector facing = new Vector(-Math.sin(yaw) * Math.cos(pitch), -Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch));
-        event.player.launchProjectile(SmallFireball.class, facing.multiply(getConfigDouble("ability-2.speed")));
+        Fireball fireball = event.player.launchProjectile(Fireball.class, facing.multiply(getConfigDouble("ability-2.speed")));
+        fireball.setYield(getConfigInt("ability-2.explosion-power"));
+        fireball.setIsIncendiary(getConfigBool("ability-2.incendiary"));
         if (fireballs.value == 0) event.cancelAbility();
     };
     private final Ability passiveAbility = new Ability()

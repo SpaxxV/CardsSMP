@@ -70,7 +70,7 @@ public class ConductorCard extends Card {
                     launchVec.set("x", new DataFloat((float) (-Math.sin(yaw) * Math.cos(pitch)))).set("y", new DataFloat((float) (-Math.sin(pitch)))).set("z", new DataFloat((float) (Math.cos(yaw) * Math.cos(pitch))));
                     ItemStack trident = new ItemStack(Material.TRIDENT);
                     trident.addEnchantment(Enchantment.RIPTIDE, 2);
-                    event.player.startRiptideAttack(getConfigInt("ability-2.riptide-duration"), 0, trident);
+                    event.player.startRiptideAttack(getConfigInt("ability-2.riptide-duration"), 2, trident);
                 } else {
                     event.cancelAbility();
                     event.cancelCooldown();
@@ -80,14 +80,14 @@ public class ConductorCard extends Card {
                 DataInt stage = (DataInt) event.data.get("stage");
                 if (stage.value == 0 && event.player.getPitch() > 45) {
                     stage.value = 1;
-                    event.remainingTime = (getConfigInt("ability-2.riptide-duration") * 2) + 2;
+                    event.remainingTime = (getConfigInt("ability-2.riptide-duration") * 3);
                     float yaw = (float) Math.toRadians(event.player.getYaw());
                     float pitch = (float) Math.toRadians(event.player.getPitch());
                     DataSubMap launchVec = (DataSubMap) event.data.get("launch-vector");
                     launchVec.set("x", new DataFloat((float) (-Math.sin(yaw) * Math.cos(pitch) * 2))).set("y", new DataFloat((float) (-Math.sin(pitch) * 2))).set("z", new DataFloat((float) (Math.cos(yaw) * Math.cos(pitch) * 2)));
                     ItemStack trident = new ItemStack(Material.TRIDENT);
                     trident.addEnchantment(Enchantment.RIPTIDE, 2);
-                    event.player.startRiptideAttack((getConfigInt("ability-2.riptide-duration") * 2), 1, trident);
+                    event.player.startRiptideAttack((getConfigInt("ability-2.riptide-duration") * 2), 2, trident);
                 }
             })
             .setTick(event -> {

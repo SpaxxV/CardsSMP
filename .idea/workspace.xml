@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72aa2386-f900-4810-974d-b545cc9aa2fd" name="Changes" comment="Initial Commit" />
+    <list default="true" id="72aa2386-f900-4810-974d-b545cc9aa2fd" name="Changes" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/Matchable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/CardSMPCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/CardSMPCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/AlchemistCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/AlchemistCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/BountyCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/BountyCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/ConductorCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/ConductorCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/InfernoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/InfernoCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/InvisCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/InvisCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/OceanCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/OceanCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/data/values/DataBoolean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/data/values/DataBoolean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/events/CardSMPEventHandlers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/events/CardSMPEventHandlers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/items/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/items/Items.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/Pattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/Pattern.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/RecipeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/RecipeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/ritual/Ritual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/ritual/Ritual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/ritual/RitualManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/ritual/RitualManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +56,17 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="CardSMP" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CardSMP" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CardSMP" type="f1a62948:ProjectNode" />
                 <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
@@ -44,6 +80,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -60,18 +97,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Gradle.CardSMP [build].executor": "Run",
-    "Gradle.CardSMP [wrapper].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/seanw/Documents/CardSMP",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.CardSMP [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CardSMP [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/seanw/Documents/CardSMP&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\seanw\Documents\CardSMP\build\libs" />
@@ -133,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1794419345342</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1794419666077</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1794419666077</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
