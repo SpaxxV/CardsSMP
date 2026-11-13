@@ -40,6 +40,7 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.block.Block;
 import org.bukkit.damage.DamageType;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -320,9 +321,9 @@ public class CardSMPEventHandlers implements Listener {
                     if (AbilityManager.isActive(attacker, Cards.BOOST.ability1())) {
                         if (CardSMP.instance.getRng().nextDouble() > Cards.BOOST.getConfigDouble("ability-1.steal-chance")) {
                             int stealAmount = Cards.BOOST.getConfigInt("ability-1.steal-amount");
-                            if (player.getTotalExperience() < stealAmount) stealAmount = player.getTotalExperience();
-                            player.setTotalExperience(player.getTotalExperience() - stealAmount);
-                            attacker.setTotalExperience(attacker.getTotalExperience() + stealAmount);
+                            if (player.calculateTotalExperiencePoints() < stealAmount) stealAmount = player.calculateTotalExperiencePoints();
+                            player.setExperienceLevelAndProgress(player.calculateTotalExperiencePoints() - stealAmount);
+                            attacker.setExperienceLevelAndProgress(attacker.calculateTotalExperiencePoints() + stealAmount);
                         }
                     }
                 }
@@ -339,6 +340,10 @@ public class CardSMPEventHandlers implements Listener {
                 BoostCard boost = (BoostCard) Cards.BOOST;
                 if (attackerPDC.has(boost.damageBoostKey)) {
                     event.setDamage(event.getDamage() + attackerPDC.get(boost.damageBoostKey, PersistentDataType.DOUBLE));
+                }
+            } else if (event.getDamager() instanceof Fireball fireball) {
+                if (fireball.getShooter() instanceof Player shooter) {
+                    if (TrustedPlayer.hasTrust(shooter, player) || shooter.equals(player)) event.setCancelled(true);
                 }
             }
         }

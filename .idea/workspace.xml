@@ -4,31 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72aa2386-f900-4810-974d-b545cc9aa2fd" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/Matchable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="72aa2386-f900-4810-974d-b545cc9aa2fd" name="Changes" comment="1.1.1">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/CardSMP.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CardSMP.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/CardSMPCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/CardSMPCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/AlchemistCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/AlchemistCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/BountyCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/BountyCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/ConductorCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/ConductorCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/InfernoCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/InfernoCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/InvisCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/InvisCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/OceanCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/cards/classes/OceanCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/data/values/DataBoolean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/data/values/DataBoolean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/events/CardSMPEventHandlers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/events/CardSMPEventHandlers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/items/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/items/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/Pattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/Pattern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/PatternItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/RecipeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/recipes/RecipeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/ritual/Ritual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/ritual/Ritual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/ritual/RitualManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/ritual/RitualManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,11 +70,81 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SpaxxV&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/SpaxxV/CardsSMP.git&quot;,
+    &quot;accountId&quot;: &quot;ae66d81d-c03f-41ed-8059-3ca489e6a023&quot;
+  }
+}</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.5882910373489976" />
+      <entry key="MS500" value="2.1845846470834287" />
+      <entry key="S2" value="2.883567468234184" />
+      <entry key="S5" value="3.4195565425603474" />
+      <entry key="S10" value="4.100396614684461" />
+      <entry key="S30" value="6.9256820881564645" />
+      <entry key="S60" value="10.192528159419352" />
+      <entry key="M2" value="14.200679530717297" />
+      <entry key="M5" value="20.047824819802976" />
+      <entry key="M10" value="23.90354217649925" />
+      <entry key="M15" value="25.618828919296963" />
+      <entry key="M30" value="27.629145758816392" />
+      <entry key="H1" value="28.7648375250984" />
+      <entry key="H2" value="29.36934483870383" />
+      <entry key="H4" value="29.681320092481755" />
+      <entry key="D1" value="29.946413778480583" />
+      <entry key="W1" value="29.99233314767916" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.28126536943180974" />
+      <entry key="MS500" value="0.842892006407936" />
+      <entry key="S2" value="1.8875043622823933" />
+      <entry key="S5" value="3.6651151836246827" />
+      <entry key="S10" value="5.9382791493578235" />
+      <entry key="S30" value="11.015973157123767" />
+      <entry key="S60" value="15.292400589868777" />
+      <entry key="M2" value="20.39872246695502" />
+      <entry key="M5" value="26.674317920638625" />
+      <entry key="M10" value="29.890732691683624" />
+      <entry key="M15" value="31.147808923442664" />
+      <entry key="M30" value="32.51372183467346" />
+      <entry key="H1" value="33.24104445481582" />
+      <entry key="H2" value="33.61646707942166" />
+      <entry key="H4" value="33.80720681830922" />
+      <entry key="D1" value="33.967724090514174" />
+      <entry key="W1" value="33.99538562169336" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9834325270803009" />
+      <entry key="MS500" value="2.1768320368152247" />
+      <entry key="S2" value="4.057711207716083" />
+      <entry key="S5" value="6.523227237081219" />
+      <entry key="S10" value="9.574258403186953" />
+      <entry key="S30" value="17.54209310623073" />
+      <entry key="S60" value="25.126691519485593" />
+      <entry key="M2" value="34.30752513967857" />
+      <entry key="M5" value="46.541593801648744" />
+      <entry key="M10" value="53.68627813439687" />
+      <entry key="M15" value="56.68988459262342" />
+      <entry key="M30" value="60.10186772251717" />
+      <entry key="H1" value="61.98467565447688" />
+      <entry key="H2" value="62.975025404369035" />
+      <entry key="H4" value="63.48308694345772" />
+      <entry key="D1" value="63.91322464477369" />
+      <entry key="W1" value="63.98758814705003" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="3KiE9PzkXcApA1nEImjs0iDhgGx" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -104,10 +156,17 @@
     &quot;Gradle.CardSMP [wrapper].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/seanw/Documents/CardSMP&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -144,8 +203,11 @@
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -153,6 +215,13 @@
         <item itemvalue="Gradle.CardSMP [build]" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-ac68fc9d2b05-intellij.indexing.shared.core-IU-263.7307.200" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -179,8 +248,35 @@
       <option name="project" value="LOCAL" />
       <updated>1794419666077</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1.1.0 update&#10;A few additions &amp; many tweaks">
+      <option name="closed" value="true" />
+      <created>1794430764912</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1794430764912</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add missing config value">
+      <option name="closed" value="true" />
+      <created>1794430915704</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1794430915704</updated>
+    </task>
+    <task id="LOCAL-00005" summary="FIX HORRIBLE TYPO.">
+      <option name="closed" value="true" />
+      <created>1794544325436</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1794544325436</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -195,6 +291,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="1.1.0 update&#10;A few additions &amp; many tweaks" />
+    <MESSAGE value="Add missing config value" />
+    <MESSAGE value="FIX HORRIBLE TYPO." />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX HORRIBLE TYPO." />
   </component>
 </project>
