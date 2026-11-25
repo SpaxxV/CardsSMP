@@ -1,5 +1,5 @@
 name: CardSMP
-version: '1.1.0'
+version: '1.2.1'
 main: com.spaxxv.cardsmp.CardSMP
 api-version: '1.21'
 authors: [ SpaxxV ]

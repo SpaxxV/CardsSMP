@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72aa2386-f900-4810-974d-b545cc9aa2fd" name="Changes" comment="1.1.1">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/CardSMP.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CardSMP.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="72aa2386-f900-4810-974d-b545cc9aa2fd" name="Changes" comment="CardSMP 1.1.1&#10;Added self &amp; trusted damage protection for Inferno fireballs&#10;Fixed Boost Card ability1's exp steal">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/items/classes/CardTapeItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/CardSMPCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/CardSMPCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/events/CardSMPEventHandlers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/events/CardSMPEventHandlers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/items/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/items/Items.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/items/classes/CardDeckItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/spaxxv/cardsmp/items/classes/CardDeckItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,61 +86,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5882910373489976" />
-      <entry key="MS500" value="2.1845846470834287" />
-      <entry key="S2" value="2.883567468234184" />
-      <entry key="S5" value="3.4195565425603474" />
-      <entry key="S10" value="4.100396614684461" />
-      <entry key="S30" value="6.9256820881564645" />
-      <entry key="S60" value="10.192528159419352" />
-      <entry key="M2" value="14.200679530717297" />
-      <entry key="M5" value="20.047824819802976" />
-      <entry key="M10" value="23.90354217649925" />
-      <entry key="M15" value="25.618828919296963" />
-      <entry key="M30" value="27.629145758816392" />
-      <entry key="H1" value="28.7648375250984" />
-      <entry key="H2" value="29.36934483870383" />
-      <entry key="H4" value="29.681320092481755" />
-      <entry key="D1" value="29.946413778480583" />
-      <entry key="W1" value="29.99233314767916" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0" />
+      <entry key="M2" value="1.0" />
+      <entry key="M5" value="1.0" />
+      <entry key="M10" value="1.0000000000007703" />
+      <entry key="M15" value="1.0000000312384711" />
+      <entry key="M30" value="1.0017367177712337" />
+      <entry key="H1" value="1.4573056261279445" />
+      <entry key="H2" value="8.578395942338592" />
+      <entry key="H4" value="31.984044916303027" />
+      <entry key="D1" value="101.37382130591693" />
+      <entry key="W1" value="123.80170487179431" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.28126536943180974" />
-      <entry key="MS500" value="0.842892006407936" />
-      <entry key="S2" value="1.8875043622823933" />
-      <entry key="S5" value="3.6651151836246827" />
-      <entry key="S10" value="5.9382791493578235" />
-      <entry key="S30" value="11.015973157123767" />
-      <entry key="S60" value="15.292400589868777" />
-      <entry key="M2" value="20.39872246695502" />
-      <entry key="M5" value="26.674317920638625" />
-      <entry key="M10" value="29.890732691683624" />
-      <entry key="M15" value="31.147808923442664" />
-      <entry key="M30" value="32.51372183467346" />
-      <entry key="H1" value="33.24104445481582" />
-      <entry key="H2" value="33.61646707942166" />
-      <entry key="H4" value="33.80720681830922" />
-      <entry key="D1" value="33.967724090514174" />
-      <entry key="W1" value="33.99538562169336" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="1.58058248779271E-265" />
+      <entry key="S60" value="1.579777625166347E-132" />
+      <entry key="M2" value="5.826644499918476E-66" />
+      <entry key="M5" value="5.689896399247429E-26" />
+      <entry key="M10" value="1.4369770136327906E-12" />
+      <entry key="M15" value="4.9648605273563816E-8" />
+      <entry key="M30" value="0.002113995186367516" />
+      <entry key="H1" value="0.4815230332557686" />
+      <entry key="H2" value="7.448777921466945" />
+      <entry key="H4" value="29.467144626058975" />
+      <entry key="D1" value="92.95443289560039" />
+      <entry key="W1" value="113.21646291622426" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9834325270803009" />
-      <entry key="MS500" value="2.1768320368152247" />
-      <entry key="S2" value="4.057711207716083" />
-      <entry key="S5" value="6.523227237081219" />
-      <entry key="S10" value="9.574258403186953" />
-      <entry key="S30" value="17.54209310623073" />
-      <entry key="S60" value="25.126691519485593" />
-      <entry key="M2" value="34.30752513967857" />
-      <entry key="M5" value="46.541593801648744" />
-      <entry key="M10" value="53.68627813439687" />
-      <entry key="M15" value="56.68988459262342" />
-      <entry key="M30" value="60.10186772251717" />
-      <entry key="H1" value="61.98467565447688" />
-      <entry key="H2" value="62.975025404369035" />
-      <entry key="H4" value="63.48308694345772" />
-      <entry key="D1" value="63.91322464477369" />
-      <entry key="W1" value="63.98758814705003" />
+      <entry key="MS100" value="0.9201876506248751" />
+      <entry key="MS500" value="0.9835020740262483" />
+      <entry key="S2" value="0.9958497530944581" />
+      <entry key="S5" value="0.9983378297043665" />
+      <entry key="S10" value="0.999168569213607" />
+      <entry key="S30" value="0.9997227795604651" />
+      <entry key="S60" value="0.9998613801725043" />
+      <entry key="M2" value="0.9999306876841536" />
+      <entry key="M5" value="0.9999722744971364" />
+      <entry key="M10" value="0.9999861371546808" />
+      <entry key="M15" value="0.9999908388490253" />
+      <entry key="M30" value="1.0038437463063592" />
+      <entry key="H1" value="1.9385671021917197" />
+      <entry key="H2" value="16.025188928547568" />
+      <entry key="H4" value="61.44728096097767" />
+      <entry key="D1" value="194.32620496802872" />
+      <entry key="W1" value="237.0178113717077" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -177,11 +179,11 @@
       <recent name="com.spaxxv.cardsmp.items" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.spaxxv.cardsmp.items.classes" />
       <recent name="com.spaxxv.cardsmp.recipes" />
       <recent name="com.spaxxv.cardsmp.util" />
       <recent name="com.spaxxv.cardsmp.cards.classes.event" />
       <recent name="com.spaxxv.cardsmp.cards.classes" />
-      <recent name="com.spaxxv.cardsmp.data.values" />
     </key>
   </component>
   <component name="RunManager">
@@ -272,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1794544325436</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="CardSMP 1.1.1&#10;Added self &amp; trusted damage protection for Inferno fireballs&#10;Fixed Boost Card ability1's exp steal">
+      <option name="closed" value="true" />
+      <created>1794545141550</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1794545141550</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,6 +304,7 @@
     <MESSAGE value="1.1.0 update&#10;A few additions &amp; many tweaks" />
     <MESSAGE value="Add missing config value" />
     <MESSAGE value="FIX HORRIBLE TYPO." />
-    <option name="LAST_COMMIT_MESSAGE" value="FIX HORRIBLE TYPO." />
+    <MESSAGE value="CardSMP 1.1.1&#10;Added self &amp; trusted damage protection for Inferno fireballs&#10;Fixed Boost Card ability1's exp steal" />
+    <option name="LAST_COMMIT_MESSAGE" value="CardSMP 1.1.1&#10;Added self &amp; trusted damage protection for Inferno fireballs&#10;Fixed Boost Card ability1's exp steal" />
   </component>
 </project>

@@ -32,7 +32,7 @@ public class CardDeckItem extends BasicItem {
                         CardInstance currentCard = CardManager.getCard(event.getPlayer());
                         Card newCard = Cards.getRandomCard(CardSMP.instance.getRng());
                         CardManager.equipCard(event.getPlayer(), new CardInstance(newCard, currentCard.tearLevel), true);
-                        event.getPlayer().sendMessage(Component.text("Re-rolled your card! You now have a " + newCard.getName() + " Card."));
+                        event.getPlayer().sendMessage(Component.text("Re-rolled your card! You now have a " + newCard.getName() + " Card.").color(NamedTextColor.GREEN));
                         if (event.getPlayer().getGameMode() != GameMode.CREATIVE) event.getItem().subtract();
                     } else {
                         event.getPlayer().sendMessage(Component.text("You cannot re-roll while you have an ability on cooldown!").color(NamedTextColor.RED));

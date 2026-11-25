@@ -47,11 +47,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.*;
-import org.bukkit.event.inventory.CraftItemEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
 import org.bukkit.event.world.WorldSaveEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -161,15 +160,27 @@ public class CardSMPEventHandlers implements Listener {
                                     int ri = 0;
                                     boolean netherStar = false;
                                     int heads = 0;
+                                    int dbs = 0;
                                     for (ItemStack item : items) {
                                         if (item == null) continue;
-                                        if (heads < 4 && item.getType() == Material.PLAYER_HEAD) {
-                                            int req = (4 - heads);
+                                        if (heads < 2 && item.getType() == Material.PLAYER_HEAD) {
+                                            int req = (2 - heads);
                                             if (item.getAmount() >= req) {
-                                                heads = 4;
+                                                heads = 2;
                                                 ritualItems[ri] = new RitualItem(item, req);
                                             } else {
                                                 heads += item.getAmount();
+                                                ritualItems[ri] = new RitualItem(item, item.getAmount());
+                                            }
+                                            ri++;
+                                        }
+                                        if (dbs < 2 && item.getType() == Material.DIAMOND_BLOCK) {
+                                            int req = (2 - dbs);
+                                            if (item.getAmount() >= req) {
+                                                dbs = 2;
+                                                ritualItems[ri] = new RitualItem(item, req);
+                                            } else {
+                                                dbs += item.getAmount();
                                                 ritualItems[ri] = new RitualItem(item, item.getAmount());
                                             }
                                             ri++;
@@ -180,25 +191,13 @@ public class CardSMPEventHandlers implements Listener {
                                             ri++;
                                         }
                                     }
-                                    if (netherStar && heads == 4) {
+                                    if (netherStar && heads == 2 && dbs == 2) {
                                         for (int i = 0; i < ri; i++) {
                                             ritualItems[i].doRemove();
                                         }
                                         RitualManager.setRitual(new Ritual(event.getPlayer(), 5));
                                     } else {
-                                        RitualItem ritualItem = null;
-                                        for (ItemStack item : items) {
-                                            if (item != null & ItemRegistry.isCustom(item) && ItemRegistry.getItemFrom(item) == Items.CARD_TAPE) {
-                                                ritualItem = new RitualItem(item, 1);
-                                                break;
-                                            }
-                                        }
-                                        if (ritualItem != null) {
-                                            ritualItem.doRemove();
-                                            RitualManager.setRitual(new Ritual(event.getPlayer(), 1));
-                                        } else {
-                                            event.getPlayer().sendMessage(Component.text("You are missing the required materials to begin a ritual!").color(NamedTextColor.RED));
-                                        }
+                                        event.getPlayer().sendMessage(Component.text("You are missing the required materials to begin a ritual!").color(NamedTextColor.RED));
                                     }
                                 } else {
                                     event.getPlayer().sendMessage(Component.text("The ritual altar deems you have no need for a ritual!").color(NamedTextColor.RED));
@@ -447,7 +446,14 @@ public class CardSMPEventHandlers implements Listener {
                 CardInstance cardInstance = CardManager.getCard(event.getPlayer());
                 if (cardInstance != null && cardInstance.tearLevel < 5) {
                     cardInstance.tearLevel++;
+                    event.getPlayer().sendMessage(Component.text("Your card loses some of its energy. (Tear " + cardInstance.tearLevel + ")").color(NamedTextColor.RED));
                     CardManager.setCardData(event.getPlayer(), cardInstance);
+                    CardInstance acardInstance = CardManager.getCard(attackingPlayer);
+                    if (acardInstance != null && acardInstance.tearLevel > 0) {
+                        acardInstance.tearLevel--;
+                        event.getPlayer().sendMessage(Component.text("Your card regains some of its energy. (Tear " + acardInstance.tearLevel + ")").color(NamedTextColor.GREEN));
+                        CardManager.setCardData(attackingPlayer, acardInstance);
+                    }
                 }
             }
         }
@@ -492,6 +498,17 @@ public class CardSMPEventHandlers implements Listener {
                     RitualManager.markToEnd();
                 }
             }
+        }
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
+        if (event.getInventory().getType() != InventoryType.ENDER_CHEST) return;
+        Inventory clicked = event.getClickedInventory();
+        Item item = ItemRegistry.getItemFrom(event.getCurrentItem());
+        if (item instanceof EventCardItem) {
+            if (event.getAction() == InventoryAction.MOVE_TO_OTHER_INVENTORY) event.setCancelled(true);
+            if (clicked != null && clicked.getType() == InventoryType.ENDER_CHEST) event.setCancelled(true);
         }
     }
 }

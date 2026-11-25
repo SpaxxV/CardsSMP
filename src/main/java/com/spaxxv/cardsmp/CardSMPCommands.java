@@ -34,6 +34,7 @@ public class CardSMPCommands {
     public static LiteralCommandNode<CommandSourceStack> activateCommand;
     public static LiteralCommandNode<CommandSourceStack> trustCommand;
     public static LiteralCommandNode<CommandSourceStack> boostCommand;
+    public static LiteralCommandNode<CommandSourceStack> withdrawCommand;
 
     public static void buildCommands() {
         LiteralArgumentBuilder<CommandSourceStack> root = Commands.literal("cards").requires(source -> source.getSender().hasPermission("permission.cardssmp.admin"));
@@ -196,12 +197,8 @@ public class CardSMPCommands {
 
                      return Command.SINGLE_SUCCESS;
                  }));
-        root.then(Commands.literal("runtexturetest")
+        root.then(Commands.literal("rundebugtest")
                 .executes(context -> {
-                    context.getSource().getSender().sendPlainMessage("Result of \\uE001:");
-
-                    context.getSource().getSender().sendPlainMessage("\n\n\n\n\uE001");
-
                     return Command.SINGLE_SUCCESS;
                 }));
         root.then(Commands.literal("setrituallocation")
@@ -338,6 +335,28 @@ public class CardSMPCommands {
             return Command.SINGLE_SUCCESS;
         });
         boostCommand = boost.build();
+        LiteralArgumentBuilder<CommandSourceStack> withdraw = Commands.literal("eventwithdraw");
+        withdraw.executes(context -> {
+            Entity executor = context.getSource().getExecutor();
+            if (executor instanceof Player player) {
+                CardInstance cardInstance = CardManager.getEventCard(player);
+                if (cardInstance != null) {
+                    if (!(AbilityManager.isActive(player, AbilitySlot.EVENT))) {
+                        if (!(AbilityManager.onCooldown(player, AbilitySlot.EVENT))) {
+                            player.give(ItemRegistry.getItem(CardSMP.instance.getResourceKey(cardInstance.card.getID().replace("-", "_"))).createItemStack());
+                            CardManager.removeEventCardData(player);
+                        } else {
+                            context.getSource().getSender().sendPlainMessage("You cannot withdraw an event card with it's ability on cooldown!");
+                        }
+                    } else {
+                        context.getSource().getSender().sendPlainMessage("You cannot withdraw an event card with it's ability active!");
+                    }
+                } else {
+                    context.getSource().getSender().sendPlainMessage("You do not have an event card!");
+                }
+            }
+            return Command.SINGLE_SUCCESS;
+        });
     }
 
     private static void activateAbility(CommandContext<CommandSourceStack> context, Player player, CardInstance cardInstance, Ability ability) {
